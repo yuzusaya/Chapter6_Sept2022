@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:converter="clr-namespace:DataBindingMauiApp"
+             x:Class="DataBindingMauiApp.Views.ThirdPage"
+             Title="ThirdPage">
+    <ContentPage.Resources>
+        <converter:StatusToColorConverter x:Key="statusToColorConverter" />
+    </ContentPage.Resources>
+    <VerticalStackLayout>
+        <StackLayout>
+            <!--<Label Text="ROTATION"
+               BindingContext="{x:Reference slider}"
+               Rotation="{Binding Path=Value}"
+               FontAttributes="Bold"
+               FontSize="18"
+               HorizontalOptions="Center"
+               VerticalOptions="Center" />
+        <Slider x:Name="slider"
+                Maximum="360"
+                VerticalOptions="Center" />
+        <Label BindingContext="{x:Reference slider}"
+               Text="{Binding Value, StringFormat='The angle is {0:F0} degrees'}"
+               FontAttributes="Bold"
+               FontSize="18"
+               HorizontalOptions="Center"
+               VerticalOptions="Center" />-->
+
+
+            <Entry x:Name="myEntry"/>
+            <Label BindingContext="{x:Reference myEntry}"
+                   Text="{Binding Path=Text}"/>
+
+            <CollectionView x:Name="myCollectionView">
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <StackLayout>
+                            <Label Text="{Binding Name}"
+                                   TextColor="{Binding Status,Converter={StaticResource statusToColorConverter}}"/>
+                            <Label Text="{Binding Gender}"/>
+                        </StackLayout>
+                    </DataTemplate>
+
+                </CollectionView.ItemTemplate>
+
+            </CollectionView>
+
+        </StackLayout>
+    </VerticalStackLayout>
+</ContentPage>
